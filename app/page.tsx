@@ -399,7 +399,6 @@ export default function Home() {
                 background: "linear-gradient(0deg, rgba(5,13,26,0.98) 0%, rgba(5,13,26,0.75) 55%, transparent 100%)",
                 transition: "all 0.5s ease",
               }}>
-                <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>{pillar.icon}</div>
                 <h3 style={{
                   fontFamily: "'Exo 2', sans-serif",
                   fontWeight: 700,
