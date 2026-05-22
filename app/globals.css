@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --azure:       #0EBBF0;
+  --azure-light: #4DD9FF;
+  --azure-pale:  #B3EEFF;
+  --azure-deep:  #0880B8;
+  --navy:        #050D1A;
+  --dark:        #080F1C;
+  --dark-mid:    #0D1828;
+  --dark-card:   #0A1422;
+  --white:       #F0F8FF;
+  --muted:       rgba(176,220,255,0.6);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--navy);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── Azure shimmer ── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(14,187,240,0.3); }
+  50%       { box-shadow: 0 0 50px rgba(14,187,240,0.7); }
+}
+@keyframes particleDrift {
+  0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0.6; }
+  50%  { transform: translateY(-60px) translateX(20px) scale(1.1); opacity: 0.3; }
+  100% { transform: translateY(-120px) translateX(-10px) scale(0.8); opacity: 0; }
+}
+@keyframes scanLine {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50%        { opacity: 1; }
+}
+
+/* ── Azure text gradient ── */
+.azure-text {
+  background: linear-gradient(90deg, var(--azure-deep), var(--azure), var(--azure-light), var(--azure-pale), var(--azure-light), var(--azure));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 5s linear infinite;
+}
+
+/* ── Buttons ── */
+.azure-btn {
+  background: linear-gradient(135deg, var(--azure-deep), var(--azure));
+  color: var(--navy);
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.azure-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  transition: left 0.5s ease;
+}
+.azure-btn:hover::before { left: 100%; }
+.azure-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(14,187,240,0.5);
+}
+
+.outline-btn {
+  border: 1px solid var(--azure);
+  color: var(--azure);
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+.outline-btn:hover {
+  background: rgba(14,187,240,0.1);
+  box-shadow: 0 4px 20px rgba(14,187,240,0.3);
+  transform: translateY(-2px);
+}
+
+/* ── Cards ── */
+.card-hover {
+  transition: all 0.4s ease;
+}
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(14,187,240,0.2);
+  border-color: var(--azure) !important;
+}
+
+/* ── Nav links ── */
+.nav-link {
+  position: relative;
+  color: rgba(240,248,255,0.8);
+  transition: color 0.3s;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 2px;
+  background: var(--azure);
+  transition: width 0.3s ease;
+}
+.nav-link:hover { color: var(--azure-light); }
+.nav-link:hover::after { width: 100%; }
+
+/* ── Section typography ── */
+.section-label {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  color: var(--azure);
+  text-transform: uppercase;
+}
+.section-title {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.section-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-style: italic;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* ── Divider ── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--azure), transparent);
+}
+
+/* ── Reveal scroll animation ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Hero animations ── */
+.animate-fade-up {
+  animation: fadeInUp 0.9s ease forwards;
+}
+.animate-fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+.floating {
+  animation: float 4s ease-in-out infinite;
+}
+.glow-animate {
+  animation: glow 3s ease-in-out infinite;
+}
+.pulse-dot {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ── Pillar card ── */
+.pillar-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.pillar-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 30%, rgba(14,187,240,0.85) 100%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+}
+.pillar-card:hover::before { opacity: 1; }
+.pillar-card:hover { transform: scale(1.02); }
+.pillar-card-content {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 2rem;
+  z-index: 2;
+  background: linear-gradient(180deg, transparent 0%, rgba(5,13,26,0.9) 100%);
+  transition: all 0.5s ease;
+}
+.pillar-card:hover .pillar-card-content {
+  background: transparent;
+}
+
+/* ── Skeleton loader ── */
+.img-skeleton {
+  background: linear-gradient(90deg,
+    rgba(14,187,240,0.06) 25%,
+    rgba(14,187,240,0.12) 50%,
+    rgba(14,187,240,0.06) 75%
+  );
+  background-size: 200% 100%;
+  animation: imgShimmer 1.4s ease-in-out infinite;
+}
+@keyframes imgShimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Grid scan line ── */
+.scan-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--azure), transparent);
+  opacity: 0.3;
+  animation: scanLine 8s linear infinite;
+  pointer-events: none;
+}
