@@ -6,39 +6,39 @@ import Navbar from "@/components/Navbar";
 
 const pillars = [
   {
-    id: "general-lights",
-    title: "General Lights",
+    id: "Li",
+    title: "Lighting Solutions",
     tagline: "Discover versatile lighting solutions perfect for homes and businesses.",
-    icon: "💡",
     color: "#0EBBF0",
-    bg: "https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=800&q=80",
-    href: "/products/general-lights",
+    // Bright modern living room with recessed LED ceiling lights
+    bg: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=900&q=85",
+    href: "/products/Lighting-Solutions",
   },
   {
     id: "wiring-device",
     title: "Wiring Device",
     tagline: "Premium switches, sockets, and wiring accessories for every installation.",
-    icon: "🔌",
     color: "#4DD9FF",
-    bg: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+    // Close-up of modern electrical panel / circuit breaker
+    bg: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=900&q=85",
     href: "/products/wiring-device",
   },
   {
     id: "designer-lightings",
     title: "Designer Lightings",
     tagline: "Architectural and decorative fixtures that elevate any space.",
-    icon: "✨",
     color: "#B3EEFF",
-    bg: "https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?w=800&q=80",
+    // Luxury interior with dramatic pendant / chandelier lighting
+    bg: "https://images.unsplash.com/photo-1540518614846-7eded433c457?w=900&q=85",
     href: "/products/designer-lightings",
   },
   {
     id: "smart-solutions",
     title: "Smart Solutions",
     tagline: "Intelligent lighting systems for a connected and efficient lifestyle.",
-    icon: "🏠",
     color: "#0880B8",
-    bg: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+    // Smart home tablet / automated modern interior
+    bg: "https://images.unsplash.com/photo-1558002038-1055907df827?w=900&q=85",
     href: "/products/smart-solutions",
   },
 ];
@@ -336,17 +336,28 @@ export default function Home() {
                 minHeight: "500px",
                 background: "var(--dark-mid)",
                 borderRight: "1px solid rgba(14,187,240,0.1)",
+                backgroundImage: `url(${pillar.bg})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
               }}
             >
-              {/* Background gradient representing light category */}
+              {/* Dark overlay so text stays readable */}
+              <div style={{
+                position: "absolute",
+                inset: 0,
+                background: "rgba(5,13,26,0.6)",
+                zIndex: 0,
+              }} />
+
+              {/* Color-tinted gradient overlay */}
               <div style={{
                 position: "absolute",
                 inset: 0,
                 background: `linear-gradient(
                   135deg,
-                  rgba(5,13,26,0.95) 0%,
-                  rgba(8,15,28,0.7) 50%,
-                  rgba(14,187,240,0.15) 100%
+                  rgba(5,13,26,0.5) 0%,
+                  rgba(8,15,28,0.3) 50%,
+                  ${pillar.color}22 100%
                 )`,
                 zIndex: 0,
               }} />
@@ -385,7 +396,7 @@ export default function Home() {
                 bottom: 0, left: 0, right: 0,
                 padding: "2.5rem 2rem",
                 zIndex: 2,
-                background: "linear-gradient(0deg, rgba(5,13,26,0.97) 0%, rgba(5,13,26,0.6) 60%, transparent 100%)",
+                background: "linear-gradient(0deg, rgba(5,13,26,0.98) 0%, rgba(5,13,26,0.75) 55%, transparent 100%)",
                 transition: "all 0.5s ease",
               }}>
                 <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>{pillar.icon}</div>
@@ -450,6 +461,20 @@ export default function Home() {
           }
           .pillar-card:hover .pillar-hover-glow {
             opacity: 1 !important;
+          }
+          .pillar-card {
+            transition: transform 0.4s ease;
+          }
+          .pillar-card:hover {
+            background-size: 110% !important;
+          }
+          /* zoom bg image on hover */
+          .pillar-card {
+            background-size: 100% !important;
+            transition: background-size 0.6s ease !important;
+          }
+          .pillar-card:hover {
+            background-size: 112% !important;
           }
         `}</style>
       </section>
