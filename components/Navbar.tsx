@@ -55,7 +55,13 @@ export default function Navbar({ scrolled = false }: { scrolled?: boolean }) {
             src="/logo.png"
             alt="Landlite Philippines Corporation"
             width={180} height={60} priority
-            style={{ height: "44px", width: "auto", objectFit: "contain" }}
+            style={{
+              height: "44px", width: "auto", objectFit: "contain",
+              opacity: scrolled ? 1 : 0,
+              transform: scrolled ? "translateY(0)" : "translateY(-8px)",
+              transition: "opacity 0.4s ease, transform 0.4s ease",
+              pointerEvents: scrolled ? "auto" : "none",
+            }}
           />
         </Link>
 

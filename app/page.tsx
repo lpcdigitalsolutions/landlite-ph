@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 
 const HERO_PHOTO = "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1800&q=85";
@@ -112,11 +113,22 @@ export default function Home() {
 
         <div style={{ textAlign: "center", zIndex: 1, maxWidth: "960px", position: "relative" }}
           className="animate-fade-up">
+          {/* Hero logo — large, centred */}
+          <div style={{ marginBottom: "1.5rem", display: "flex", justifyContent: "center" }}>
+            <Image
+              src="/logo.png"
+              alt="Landlite Philippines Corporation"
+              width={820} height={260}
+              priority
+              style={{ width: "clamp(320px,62vw,780px)", height: "auto", objectFit: "contain", filter: "drop-shadow(0 8px 32px rgba(14,187,240,0.20))" }}
+            />
+          </div>
+
           {/* Status pill */}
           <div style={{
             display: "inline-flex", alignItems: "center", gap: "0.5rem",
             border: "1px solid rgba(14,187,240,0.40)",
-            padding: "0.4rem 1.2rem", borderRadius: "100px", marginBottom: "2rem",
+            padding: "0.4rem 1.2rem", borderRadius: "100px", marginBottom: "1.25rem",
             background: "rgba(255,255,255,0.75)", backdropFilter: "blur(8px)",
           }}>
             <span style={{
@@ -129,12 +141,12 @@ export default function Home() {
             </span>
           </div>
 
-          {/* Title */}
-          <h1 style={{ fontFamily: "'Exo 2',sans-serif", fontWeight: 900, lineHeight: 1.05, marginBottom: "1.5rem", letterSpacing: "-0.02em" }}>
-            <span style={{ fontSize: "clamp(1.2rem,3vw,2.2rem)", color: "var(--text)", letterSpacing: "0.15em", display: "block", fontWeight: 300, marginBottom: "0.25rem" }}>
+          {/* Title — smaller than logo */}
+          <h1 style={{ fontFamily: "'Exo 2',sans-serif", fontWeight: 900, lineHeight: 1.1, marginBottom: "1.25rem", letterSpacing: "-0.01em" }}>
+            <span style={{ fontSize: "clamp(0.75rem,1.4vw,1.1rem)", color: "var(--text)", letterSpacing: "0.22em", display: "block", fontWeight: 400, marginBottom: "0.15rem" }}>
               POWERED BY
             </span>
-            <span className="azure-text" style={{ fontSize: "clamp(2.6rem,8vw,6.5rem)", display: "block" }}>
+            <span className="azure-text" style={{ fontSize: "clamp(1.6rem,3.5vw,2.8rem)", display: "block", letterSpacing: "0.08em" }}>
               INNOVATION
             </span>
           </h1>
