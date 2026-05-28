@@ -38,7 +38,7 @@ export default function OutletsPage() {
   };
 
   return (
-    <main style={{ background: "var(--navy)", minHeight: "100vh" }}>
+    <main style={{ background: "var(--paper)", minHeight: "100vh" }}>
       <Navbar scrolled={scrolled} />
 
       {/* Hero */}
@@ -115,7 +115,7 @@ export default function OutletsPage() {
                     fontFamily: "'Exo 2', sans-serif",
                     fontWeight: 700,
                     fontSize: "0.95rem",
-                    color: "var(--azure-light)",
+                    color: "var(--azure-deep)",
                     marginBottom: "0.25rem",
                   }}>
                     {r.name}
@@ -123,7 +123,7 @@ export default function OutletsPage() {
                   <p style={{
                     fontFamily: "'DM Sans', sans-serif",
                     fontSize: "0.8rem",
-                    color: "rgba(176,220,255,0.5)",
+                    color: "rgba(5,13,26,0.5)",
                   }}>
                     {r.branches}
                   </p>
@@ -174,12 +174,12 @@ export default function OutletsPage() {
       <footer style={{
         borderTop: "1px solid rgba(14,187,240,0.15)",
         padding: "2rem",
-        background: "var(--dark-mid)",
+        background: "var(--frost)",
         textAlign: "center",
         position: "relative",
         zIndex: 1,
       }}>
-        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", color: "rgba(176,220,255,0.2)" }}>
+        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", color: "rgba(5,13,26,0.2)" }}>
           © {new Date().getFullYear()} Landlite Philippines Corporation. All Rights Reserved.
         </p>
       </footer>

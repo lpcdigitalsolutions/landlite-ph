@@ -56,7 +56,7 @@ export default function AboutPage() {
   };
 
   return (
-    <main style={{ background: "var(--navy)", minHeight: "100vh" }}>
+    <main style={{ background: "var(--paper)", minHeight: "100vh" }}>
       <Navbar scrolled={scrolled} />
 
       {/* ── Page Hero ── */}
@@ -97,7 +97,7 @@ export default function AboutPage() {
             fontFamily: "'DM Sans', sans-serif",
             fontSize: "1.15rem",
             fontStyle: "italic",
-            color: "rgba(176,220,255,0.75)",
+            color: "rgba(5,13,26,0.75)",
             lineHeight: 1.8,
           }}>
             Two decades of lighting the Philippines — from a simple bulb company
@@ -125,7 +125,7 @@ export default function AboutPage() {
               <p style={{
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: "1rem",
-                color: "rgba(176,220,255,0.7)",
+                color: "rgba(5,13,26,0.7)",
                 lineHeight: 1.8,
                 marginBottom: "1.5rem",
               }}>
@@ -136,10 +136,10 @@ export default function AboutPage() {
               <p style={{
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: "1rem",
-                color: "rgba(176,220,255,0.7)",
+                color: "rgba(5,13,26,0.7)",
                 lineHeight: 1.8,
               }}>
-                LPC is the <strong style={{ color: "var(--azure-light)" }}>first company in the Philippines</strong> that
+                LPC is the <strong style={{ color: "var(--azure-deep)" }}>first company in the Philippines</strong> that
                 started the LED market in 2005 — with decorative LED wall lights, followed by LED Christmas lights,
                 and finally LED General Lighting.
               </p>
@@ -172,7 +172,7 @@ export default function AboutPage() {
                     <span style={{
                       fontFamily: "'DM Sans', sans-serif",
                       fontSize: "0.9rem",
-                      color: "rgba(176,220,255,0.6)",
+                      color: "rgba(5,13,26,0.6)",
                     }}>
                       {stat.label}
                     </span>
@@ -200,7 +200,7 @@ export default function AboutPage() {
       {/* ── Timeline ── */}
       <section style={{
         padding: "6rem 2rem",
-        background: "linear-gradient(180deg, var(--navy) 0%, var(--dark-mid) 100%)",
+        background: "linear-gradient(180deg, var(--paper) 0%, var(--frost) 100%)",
         position: "relative",
         zIndex: 1,
       }}>
@@ -273,7 +273,7 @@ export default function AboutPage() {
                     fontFamily: "'Exo 2', sans-serif",
                     fontWeight: 700,
                     fontSize: "1rem",
-                    color: "var(--azure-light)",
+                    color: "var(--azure-deep)",
                     marginBottom: "0.5rem",
                   }}>
                     {m.title}
@@ -281,7 +281,7 @@ export default function AboutPage() {
                   <p style={{
                     fontFamily: "'DM Sans', sans-serif",
                     fontSize: "0.88rem",
-                    color: "rgba(176,220,255,0.65)",
+                    color: "rgba(5,13,26,0.65)",
                     lineHeight: 1.7,
                   }}>
                     {m.desc}
@@ -304,7 +304,7 @@ export default function AboutPage() {
             <p style={{
               fontFamily: "'DM Sans', sans-serif",
               fontStyle: "italic",
-              color: "rgba(176,220,255,0.6)",
+              color: "rgba(5,13,26,0.6)",
               fontSize: "1rem",
               maxWidth: "600px",
               margin: "0 auto",
@@ -332,7 +332,7 @@ export default function AboutPage() {
                   fontFamily: "'Exo 2', sans-serif",
                   fontWeight: 500,
                   fontSize: "0.85rem",
-                  color: "rgba(176,220,255,0.7)",
+                  color: "rgba(5,13,26,0.7)",
                   letterSpacing: "0.02em",
                 }}
               >
@@ -346,7 +346,7 @@ export default function AboutPage() {
       {/* ── Retail Partners ── */}
       <section style={{
         padding: "5rem 2rem",
-        background: "var(--dark-mid)",
+        background: "var(--frost)",
         borderTop: "1px solid rgba(14,187,240,0.1)",
         position: "relative",
         zIndex: 1,
@@ -371,7 +371,7 @@ export default function AboutPage() {
                   fontFamily: "'Exo 2', sans-serif",
                   fontWeight: 600,
                   fontSize: "0.85rem",
-                  color: "rgba(176,220,255,0.6)",
+                  color: "rgba(5,13,26,0.6)",
                 }}
               >
                 {p}
@@ -390,7 +390,7 @@ export default function AboutPage() {
           <p style={{
             fontFamily: "'DM Sans', sans-serif",
             fontStyle: "italic",
-            color: "rgba(176,220,255,0.65)",
+            color: "rgba(5,13,26,0.65)",
             marginBottom: "2.5rem",
             lineHeight: 1.7,
           }}>
@@ -431,7 +431,7 @@ export default function AboutPage() {
       <footer style={{
         borderTop: "1px solid rgba(14,187,240,0.15)",
         padding: "2rem",
-        background: "var(--dark-mid)",
+        background: "var(--frost)",
         textAlign: "center",
         position: "relative",
         zIndex: 1,
@@ -439,7 +439,7 @@ export default function AboutPage() {
         <p style={{
           fontFamily: "'DM Sans', sans-serif",
           fontSize: "0.75rem",
-          color: "rgba(176,220,255,0.2)",
+          color: "rgba(5,13,26,0.2)",
         }}>
           © {new Date().getFullYear()} Landlite Philippines Corporation. All Rights Reserved.
         </p>

@@ -68,7 +68,7 @@ export default function ContactPage() {
   ];
 
   return (
-    <main style={{ background: "var(--navy)", minHeight: "100vh" }}>
+    <main style={{ background: "var(--paper)", minHeight: "100vh" }}>
       <Navbar scrolled={scrolled} />
 
       {/* Hero */}
@@ -154,7 +154,7 @@ export default function ContactPage() {
                   <p key={line} style={{
                     fontFamily: "'DM Sans', sans-serif",
                     fontSize: "0.85rem",
-                    color: "rgba(176,220,255,0.65)",
+                    color: "rgba(5,13,26,0.65)",
                     lineHeight: 1.7,
                   }}>
                     {line}
@@ -180,7 +180,7 @@ export default function ContactPage() {
               fontFamily: "'Exo 2', sans-serif",
               fontWeight: 700,
               fontSize: "1.1rem",
-              color: "var(--azure-light)",
+              color: "var(--azure-deep)",
               marginBottom: "1.25rem",
             }}>
               🌴 Cebu Branch
@@ -192,7 +192,7 @@ export default function ContactPage() {
             }}>
               <div>
                 <p style={{ fontFamily: "'Exo 2', sans-serif", fontSize: "0.7rem", color: "var(--azure)", letterSpacing: "0.15em", marginBottom: "0.5rem" }}>ADDRESS</p>
-                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.85rem", color: "rgba(176,220,255,0.65)", lineHeight: 1.6 }}>
+                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.85rem", color: "rgba(5,13,26,0.65)", lineHeight: 1.6 }}>
                   J. De Veyra St. Bgy. Carreta<br />
                   North Reclamation Area<br />
                   Cebu City, Philippines
@@ -200,7 +200,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <p style={{ fontFamily: "'Exo 2', sans-serif", fontSize: "0.7rem", color: "var(--azure)", letterSpacing: "0.15em", marginBottom: "0.5rem" }}>PHONE</p>
-                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.85rem", color: "rgba(176,220,255,0.65)", lineHeight: 1.6 }}>
+                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.85rem", color: "rgba(5,13,26,0.65)", lineHeight: 1.6 }}>
                   +6332-268-8855<br />
                   +6332-238-9373<br />
                   Mobile: +639177148193
@@ -208,7 +208,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <p style={{ fontFamily: "'Exo 2', sans-serif", fontSize: "0.7rem", color: "var(--azure)", letterSpacing: "0.15em", marginBottom: "0.5rem" }}>EMAIL</p>
-                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.85rem", color: "rgba(176,220,255,0.65)", lineHeight: 1.6 }}>
+                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.85rem", color: "rgba(5,13,26,0.65)", lineHeight: 1.6 }}>
                   cebusales@landlitephilcorp.com
                 </p>
               </div>
@@ -242,7 +242,7 @@ export default function ContactPage() {
       {/* Social + HR */}
       <section style={{
         padding: "5rem 2rem",
-        background: "var(--dark-mid)",
+        background: "var(--frost)",
         borderTop: "1px solid rgba(14,187,240,0.1)",
         textAlign: "center",
         position: "relative",
@@ -280,7 +280,7 @@ export default function ContactPage() {
                   fontFamily: "'Exo 2', sans-serif",
                   fontWeight: 600,
                   fontSize: "0.85rem",
-                  color: "rgba(176,220,255,0.7)",
+                  color: "rgba(5,13,26,0.7)",
                   transition: "all 0.3s ease",
                 }}
               >
@@ -308,7 +308,7 @@ export default function ContactPage() {
             <p style={{
               fontFamily: "'DM Sans', sans-serif",
               fontSize: "0.9rem",
-              color: "rgba(176,220,255,0.65)",
+              color: "rgba(5,13,26,0.65)",
             }}>
               hr@landlitephilcorp.com &nbsp;|&nbsp; hr_003@landlitephilcorp.com
             </p>
@@ -320,12 +320,12 @@ export default function ContactPage() {
       <footer style={{
         borderTop: "1px solid rgba(14,187,240,0.15)",
         padding: "2rem",
-        background: "var(--dark-mid)",
+        background: "var(--frost)",
         textAlign: "center",
         position: "relative",
         zIndex: 1,
       }}>
-        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", color: "rgba(176,220,255,0.2)" }}>
+        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.75rem", color: "rgba(5,13,26,0.2)" }}>
           © {new Date().getFullYear()} Landlite Philippines Corporation. All Rights Reserved.
         </p>
       </footer>
