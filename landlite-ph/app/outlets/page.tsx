@@ -4,12 +4,12 @@ import { useEffect, useRef, useState } from "react";
 import Navbar from "@/components/Navbar";
 
 const retailers = [
-  { name: "Ace Hardware", branches: "Nationwide", logo: "/logos/ace-hardware.svg" },
-  { name: "Wilcon Depot", branches: "Nationwide", logo: "/logos/wilcon-depot.svg" },
-  { name: "CW Home Depot", branches: "Nationwide", logo: "/logos/cw-home-depot.svg" },
-  { name: "MC Home Depot", branches: "Nationwide", logo: "/logos/mc-home-depot.svg" },
-  { name: "Handyman", branches: "Nationwide", logo: "/logos/handyman.svg" },
-  { name: "Citi Hardware", branches: "Nationwide", logo: "/logos/citi-hardware.svg" },
+  { name: "Wilcon Depot", branches: "Nationwide", icon: "🏬" },
+  { name: "Ace Hardware", branches: "Nationwide", icon: "🔧" },
+  { name: "CW Home Depot", branches: "Nationwide", icon: "🏠" },
+  { name: "MC Home Depot", branches: "Nationwide", icon: "🏠" },
+  { name: "Handyman", branches: "Nationwide", icon: "🛠️" },
+  { name: "Citi Hardware", branches: "Nationwide", icon: "🔩" },
 ];
 
 export default function OutletsPage() {
@@ -109,7 +109,7 @@ export default function OutletsPage() {
                   e.currentTarget.style.borderColor = "rgba(14,187,240,0.12)";
                 }}
               >
-                <img src={r.logo} alt={r.name} style={{ width: "100px", height: "50px", objectFit: "contain", flexShrink: 0 }} />
+                <div style={{ fontSize: "2.5rem" }}>{r.icon}</div>
                 <div>
                   <h3 style={{
                     fontFamily: "'Exo 2', sans-serif",

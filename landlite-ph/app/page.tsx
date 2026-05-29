@@ -306,36 +306,14 @@ export default function Home() {
       </section>
 
       {/* ── PARTNER BANNER ────────────────────────────────── */}
-      <section style={{ padding: "4rem 2rem 5rem", background: "var(--frost)", borderTop: "1px solid rgba(5,13,26,0.06)", borderBottom: "1px solid rgba(5,13,26,0.06)", textAlign: "center", position: "relative", zIndex: 1 }}>
-        <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
-          <p className="section-label" style={{ marginBottom: "0.75rem" }}>{"◆ WHERE TO BUY ◆"}</p>
-          <h2 className="section-title" style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.2rem)", marginBottom: "0.75rem" }}>
-            Available at <span className="azure-text">170+ Stores</span> Nationwide
-          </h2>
-          <p className="section-subtitle" style={{ fontSize: "0.95rem", maxWidth: "500px", margin: "0 auto 2.5rem" }}>
-            Find Landlite products at the {"Philippines'"} leading hardware and home improvement retailers.
-          </p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", gap: "1rem", alignItems: "center", maxWidth: "900px", margin: "0 auto" }}>
-            {[
-              { name: "Ace Hardware", logo: "/logos/ace-hardware.svg" },
-              { name: "Wilcon Depot", logo: "/logos/wilcon-depot.svg" },
-              { name: "CW Home Depot", logo: "/logos/cw-home-depot.svg" },
-              { name: "MC Home Depot", logo: "/logos/mc-home-depot.svg" },
-              { name: "Handyman", logo: "/logos/handyman.svg" },
-              { name: "Citi Hardware", logo: "/logos/citi-hardware.svg" },
-            ].map((r) => (
-              <div key={r.name} style={{
-                padding: "1rem", background: "var(--paper)",
-                border: "1px solid rgba(5,13,26,0.08)", borderRadius: "10px",
-                boxShadow: "0 2px 6px rgba(5,13,26,0.04)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                height: "80px", transition: "all 0.25s ease",
-              }}
-              onMouseOver={(e) => { e.currentTarget.style.borderColor = "rgba(14,187,240,0.35)"; e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 8px 20px rgba(5,13,26,0.08)"; }}
-              onMouseOut={(e) => { e.currentTarget.style.borderColor = "rgba(5,13,26,0.08)"; e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 2px 6px rgba(5,13,26,0.04)"; }}
-              >
-                <img src={r.logo} alt={r.name} style={{ maxWidth: "120px", maxHeight: "50px", objectFit: "contain" }} />
-              </div>
+      <section style={{ padding: "4rem 2rem", background: "var(--frost)", borderTop: "1px solid rgba(5,13,26,0.06)", borderBottom: "1px solid rgba(5,13,26,0.06)", textAlign: "center", position: "relative", zIndex: 1 }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+          <p className="section-label" style={{ marginBottom: "1.5rem" }}>ALSO AVAILABLE AT</p>
+          <div style={{ display: "flex", justifyContent: "center", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
+            {["Wilcon Depot","Ace Hardware","CW Home Depot","MC Home Depot","Handyman","Citi Hardware"].map((p) => (
+              <span key={p} style={{ fontFamily: "'Exo 2',sans-serif", fontWeight: 600, fontSize: "0.85rem", color: "var(--text-muted)", letterSpacing: "0.05em", padding: "0.6rem 1.1rem", border: "1px solid rgba(5,13,26,0.08)", background: "var(--paper)", borderRadius: "4px", boxShadow: "0 1px 2px rgba(5,13,26,0.04)" }}>
+                {p}
+              </span>
             ))}
           </div>
         </div>

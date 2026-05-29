@@ -62,13 +62,11 @@ export default function ProductCatalog({ products, accent = "#0880B8", title }: 
       display: "block", width: "100%", textAlign: "left",
       padding: "0.45rem 0.75rem", borderRadius: "6px",
       border: "none", cursor: "pointer",
-      fontFamily: "'DM Sans',sans-serif", fontSize: "0.82rem",
+      fontFamily: "'DM Sans',sans-serif", fontSize: "0.84rem",
       fontWeight: active ? 600 : 400,
       background: active ? `${accent}14` : "transparent",
       color: active ? accent : "var(--text-muted)",
       transition: "all 0.15s ease",
-      wordBreak: "break-word" as const,
-      lineHeight: 1.4,
     }}>{children}</button>
   );
 
@@ -82,10 +80,10 @@ export default function ProductCatalog({ products, accent = "#0880B8", title }: 
   );
 
   return (
-    <div style={{ display: "flex", gap: "1.75rem", alignItems: "flex-start", width: "100%", overflow: "visible" }}>
+    <div style={{ display: "flex", gap: "1.75rem", alignItems: "flex-start" }}>
       <style>{`
         @media (max-width: 768px) {
-          .cat-sidebar { display: ${sidebarOpen ? "block" : "none"} !important; width: 100% !important; min-width: unset !important; position: static !important; }
+          .cat-sidebar { display: ${sidebarOpen ? "block" : "none"} !important; width: 100% !important; position: static !important; }
           .cat-main { width: 100% !important; }
           .cat-grid  { grid-template-columns: repeat(2,1fr) !important; gap: 0.75rem !important; }
         }
@@ -93,10 +91,8 @@ export default function ProductCatalog({ products, accent = "#0880B8", title }: 
 
       {/* ── Sidebar ── */}
       <aside className="cat-sidebar" style={{
-        width: "260px", minWidth: "260px", flexShrink: 0,
+        width: "240px", flexShrink: 0,
         position: "sticky", top: "90px",
-        maxHeight: "calc(100vh - 110px)",
-        overflowY: "auto" as const,
         background: "var(--paper)",
         border: "1px solid rgba(5,13,26,0.07)",
         borderRadius: "14px", padding: "1.25rem 1rem",

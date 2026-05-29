@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState, useCallback } from "react";
-import Link from "next/link";
+import { useEffect, useRef, useState, useCallback } from "react";
 import Navbar from "@/components/Navbar";
 
 // ── Scene definitions ──────────────────────────────────────────────────────────
@@ -479,7 +478,7 @@ export default function SmartSolutionsPage() {
 
                   {/* Lamp cluster — cones + halos */}
                   {lamps.map((pos, i) => (
-                    <React.Fragment key={`lamp-group-${i}`}>
+                    <>
                       {/* Light cone */}
                       {brightness > 0 && (
                         <div key={`cone-${i}`} style={{
@@ -506,7 +505,7 @@ export default function SmartSolutionsPage() {
                           ? `ss-breathe ${3 + i * 0.3}s ease-in-out ${i * 0.5}s infinite`
                           : "none",
                       }} />
-                    </React.Fragment>
+                    </>
                   ))}
 
                   {/* Dust motes */}
@@ -737,53 +736,6 @@ export default function SmartSolutionsPage() {
           </div>
         </section>
 
-        {/* ── Browse Products ─────────────────────────────────────── */}
-        <section style={{
-          paddingLeft: "clamp(1.25rem, 6vw, 5rem)",
-          paddingRight: "clamp(1.25rem, 6vw, 5rem)",
-          paddingTop: "clamp(3rem, 6vw, 5rem)",
-          paddingBottom: "clamp(3rem, 8vw, 6rem)",
-          background: "var(--paper)",
-        }}>
-          <DemoHeader title="Browse Products" badge="Simon M3 Series" />
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1.25rem", maxWidth: "1200px" }}>
-            {[
-              { href: "/products/smart-solutions/smart-switches", icon: "switch", title: "Smart Switches", desc: "Zigbee switches, easy switches, curtain switches, and scene switches in 3 colors.", count: "39 products" },
-              { href: "/products/smart-solutions/smart-dimmers", icon: "dimmer", title: "Smart Dimmers", desc: "1-Gang & 2-Gang dimming switches plus wireless tunable dimmers.", count: "9 products" },
-              { href: "/products/smart-solutions/smart-sensors", icon: "circle", title: "Smart Sensors", desc: "Motion, occupancy, and ambient light sensors for automation.", count: "Coming soon" },
-              { href: "/products/smart-solutions/smart-hub", icon: "panel", title: "Smart Hub", desc: "Central gateway to connect and control all your smart devices.", count: "Coming soon" },
-            ].map((cat) => (
-              <Link key={cat.href} href={cat.href} style={{
-                display: "flex", flexDirection: "column", gap: "0.75rem",
-                padding: "1.5rem", borderRadius: "14px",
-                background: "var(--paper)", border: "1px solid rgba(5,13,26,0.06)",
-                boxShadow: "0 2px 8px rgba(5,13,26,0.06)",
-                textDecoration: "none", transition: "all 0.3s ease",
-              }}
-              onMouseOver={(e) => { e.currentTarget.style.borderColor = "rgba(14,187,240,0.40)"; e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = "0 12px 32px rgba(5,13,26,0.10)"; }}
-              onMouseOut={(e) => { e.currentTarget.style.borderColor = "rgba(5,13,26,0.06)"; e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 2px 8px rgba(5,13,26,0.06)"; }}
-              >
-                <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-                  <div style={{
-                    width: "44px", height: "44px", borderRadius: "12px",
-                    background: "rgba(14,187,240,0.10)", border: "1px solid rgba(14,187,240,0.30)",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    color: "var(--azure-deep)", flexShrink: 0,
-                  }}>
-                    <FeatIcon name={cat.icon === "switch" ? "voice" : cat.icon === "dimmer" ? "energy" : cat.icon === "circle" ? "circadian" : "app"} size={22} />
-                  </div>
-                  <div>
-                    <h3 style={{ fontFamily: "'Exo 2', sans-serif", fontSize: "1rem", fontWeight: 700, color: "var(--text)", letterSpacing: "0.02em" }}>{cat.title}</h3>
-                    <span style={{ fontFamily: "'Exo 2', sans-serif", fontSize: "0.65rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--azure-deep)" }}>{cat.count}</span>
-                  </div>
-                  <span style={{ marginLeft: "auto", color: "#0880B8", fontSize: "1.2rem" }}>{"→"}</span>
-                </div>
-                <p style={{ fontSize: "0.85rem", color: "var(--text-muted)", lineHeight: 1.6 }}>{cat.desc}</p>
-              </Link>
-            ))}
-          </div>
-        </section>
-
         {/* ── CTA ────────────────────────────────────────────────────── */}
         <section style={{
           paddingLeft: "clamp(1.25rem, 6vw, 5rem)",
@@ -849,7 +801,7 @@ export default function SmartSolutionsPage() {
           color: "rgba(5,13,26,0.30)",
           fontFamily: "'Exo 2', sans-serif", letterSpacing: "0.06em",
         }}>
-          {"©"} {new Date().getFullYear()} Landlite Philippines Corporation {"·"} Smart Solutions
+          © {new Date().getFullYear()} Landlite Philippines Corporation · Smart Solutions
         </div>
       </main>
     </>

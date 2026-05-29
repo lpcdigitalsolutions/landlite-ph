@@ -52,27 +52,6 @@ const spaceTypes = [
   { label: "Lobby / Hall",  bg: "https://images.unsplash.com/photo-1631049552240-59c37f38802b?w=600&q=80",   icon: "lobby" },
 ];
 
-const comparisons = [
-  {
-    label: "Living Room",
-    before: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=900&q=80",
-    after: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=80",
-    stats: { before: { lux: "80", cri: "62", watts: "180W" }, after: { lux: "350", cri: "95+", watts: "85W" } },
-  },
-  {
-    label: "Kitchen",
-    before: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80",
-    after: "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=900&q=80",
-    stats: { before: { lux: "120", cri: "65", watts: "200W" }, after: { lux: "500", cri: "97", watts: "95W" } },
-  },
-  {
-    label: "Bedroom",
-    before: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=900&q=80",
-    after: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900&q=80",
-    stats: { before: { lux: "60", cri: "60", watts: "120W" }, after: { lux: "200", cri: "93", watts: "45W" } },
-  },
-];
-
 const expertise = [
   { value: "500+", label: "Projects Completed" },
   { value: "20+",  label: "Years Experience" },
@@ -114,10 +93,6 @@ function Icon({ name, size = 24, color = "currentColor" }: { name: string; size?
 export default function LightingDesignPage() {
   const [scrolled, setScrolled] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [compareIdx, setCompareIdx] = useState(0);
-  const [sliderPos, setSliderPos] = useState(50);
-  const sliderContainerRef = useRef<HTMLDivElement | null>(null);
-  const isDragging = useRef(false);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", spaceType: "", size: "", style: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const revealRefs = useRef<(HTMLElement | null)[]>([]);
@@ -141,29 +116,6 @@ export default function LightingDesignPage() {
     if (el && !revealRefs.current.includes(el)) revealRefs.current.push(el);
   };
 
-  const handleSliderMove = (clientX: number) => {
-    if (!sliderContainerRef.current) return;
-    const rect = sliderContainerRef.current.getBoundingClientRect();
-    const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
-    setSliderPos((x / rect.width) * 100);
-  };
-
-  useEffect(() => {
-    const onMouseMove = (e: MouseEvent) => { if (isDragging.current) handleSliderMove(e.clientX); };
-    const onTouchMove = (e: TouchEvent) => { if (isDragging.current) handleSliderMove(e.touches[0].clientX); };
-    const onUp = () => { isDragging.current = false; };
-    window.addEventListener("mousemove", onMouseMove);
-    window.addEventListener("mouseup", onUp);
-    window.addEventListener("touchmove", onTouchMove);
-    window.addEventListener("touchend", onUp);
-    return () => {
-      window.removeEventListener("mousemove", onMouseMove);
-      window.removeEventListener("mouseup", onUp);
-      window.removeEventListener("touchmove", onTouchMove);
-      window.removeEventListener("touchend", onUp);
-    };
-  });
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
@@ -179,14 +131,6 @@ export default function LightingDesignPage() {
         @keyframes ld-shimmer { 0%{background-position:-200% center} 100%{background-position:200% center} }
         @keyframes ld-count { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
 
-        @keyframes ld-glow-pulse { 0%,100%{box-shadow:0 0 20px rgba(14,187,240,0.3)} 50%{box-shadow:0 0 40px rgba(14,187,240,0.6)} }
-        @keyframes ld-stat-pop { from{transform:scale(0.8);opacity:0} to{transform:scale(1);opacity:1} }
-        .ld-compare-tab { padding: 0.6rem 1.25rem; border-radius: 100px; border: 1px solid rgba(14,187,240,0.25); background: transparent; font-family: 'Exo 2',sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; cursor: pointer; transition: all 0.2s ease; color: var(--text-muted); }
-        .ld-compare-tab:hover { border-color: var(--azure); color: var(--azure-deep); }
-        .ld-compare-tab.active { background: linear-gradient(135deg, var(--azure-deep), var(--azure)); color: #fff; border-color: var(--azure); box-shadow: 0 4px 14px rgba(14,187,240,0.35); }
-        .ld-slider-handle { cursor: ew-resize; touch-action: none; }
-        .ld-slider-handle:hover .ld-handle-circle { box-shadow: 0 0 30px rgba(14,187,240,0.7); }
-        .ld-stat-card { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); animation: ld-stat-pop 0.4s ease forwards; }
         .ld-service-card { transition: all 0.35s cubic-bezier(0.4,0,0.2,1); }
         .ld-service-card:hover { transform: translateY(-8px); box-shadow: 0 24px 48px rgba(5,13,26,0.12), 0 0 40px rgba(14,187,240,0.14) !important; border-color: rgba(14,187,240,0.35) !important; }
 
@@ -316,168 +260,6 @@ export default function LightingDesignPage() {
               <div style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "0.82rem", color: "var(--text-inv-muted)", letterSpacing: "0.06em" }}>{e.label}</div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* ══ BEFORE / AFTER COMPARISON ═══════════════════════════════════════ */}
-      <section style={{ padding: "7rem 2rem", background: "linear-gradient(180deg, var(--paper) 0%, var(--frost) 50%, var(--paper) 100%)", position: "relative", zIndex: 1 }}>
-        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <div ref={addRef} className="reveal" style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <p className="section-label" style={{ marginBottom: "0.75rem" }}>{"◆ SEE THE DIFFERENCE ◆"}</p>
-            <h2 className="section-title" style={{ fontSize: "clamp(2rem,5vw,3.2rem)", marginBottom: "1rem" }}>
-              Without vs. With <span className="azure-text">Lighting Design</span>
-            </h2>
-            <p className="section-subtitle" style={{ maxWidth: "560px", margin: "0 auto" }}>
-              Drag the slider to reveal how professional lighting design transforms every room.
-            </p>
-          </div>
-
-          {/* Room tabs */}
-          <div style={{ display: "flex", justifyContent: "center", gap: "0.5rem", marginBottom: "2rem", flexWrap: "wrap" }}>
-            {comparisons.map((c, i) => (
-              <button key={c.label} className={`ld-compare-tab${compareIdx === i ? " active" : ""}`}
-                onClick={() => { setCompareIdx(i); setSliderPos(50); }}>
-                {c.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Interactive slider */}
-          <div ref={sliderContainerRef} style={{
-            position: "relative", width: "100%", maxWidth: "1000px", margin: "0 auto",
-            aspectRatio: "16/9", borderRadius: "16px", overflow: "hidden",
-            boxShadow: "0 20px 60px rgba(5,13,26,0.18), 0 0 40px rgba(14,187,240,0.08)",
-            border: "2px solid rgba(14,187,240,0.15)", cursor: "ew-resize", userSelect: "none",
-          }}
-          onMouseDown={(e) => { isDragging.current = true; handleSliderMove(e.clientX); }}
-          onTouchStart={(e) => { isDragging.current = true; handleSliderMove(e.touches[0].clientX); }}
-          >
-            {/* After image (full background) */}
-            <div style={{
-              position: "absolute", inset: 0,
-              backgroundImage: `url(${comparisons[compareIdx].after})`,
-              backgroundSize: "cover", backgroundPosition: "center",
-            }} />
-
-            {/* Before image (clipped by slider) */}
-            <div style={{
-              position: "absolute", inset: 0,
-              backgroundImage: `url(${comparisons[compareIdx].before})`,
-              backgroundSize: "cover", backgroundPosition: "center",
-              clipPath: `inset(0 ${100 - sliderPos}% 0 0)`,
-              filter: "brightness(0.7) saturate(0.6)",
-            }} />
-
-            {/* Dark overlay on "before" side */}
-            <div style={{
-              position: "absolute", inset: 0,
-              background: "linear-gradient(90deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 40%, transparent 50%)",
-              clipPath: `inset(0 ${100 - sliderPos}% 0 0)`,
-              pointerEvents: "none",
-            }} />
-
-            {/* Slider line */}
-            <div style={{
-              position: "absolute", top: 0, bottom: 0,
-              left: `${sliderPos}%`, transform: "translateX(-50%)",
-              width: "3px", background: "rgba(255,255,255,0.9)",
-              boxShadow: "0 0 12px rgba(14,187,240,0.6), 0 0 30px rgba(14,187,240,0.3)",
-              zIndex: 10, pointerEvents: "none",
-            }} />
-
-            {/* Slider handle */}
-            <div className="ld-slider-handle" style={{
-              position: "absolute", top: "50%", left: `${sliderPos}%`,
-              transform: "translate(-50%, -50%)", zIndex: 11, pointerEvents: "none",
-            }}>
-              <div className="ld-handle-circle" style={{
-                width: "52px", height: "52px", borderRadius: "50%",
-                background: "linear-gradient(135deg, var(--azure-deep), var(--azure))",
-                border: "3px solid rgba(255,255,255,0.9)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                boxShadow: "0 0 20px rgba(14,187,240,0.5), 0 4px 16px rgba(0,0,0,0.3)",
-                animation: "ld-glow-pulse 2s ease-in-out infinite",
-              }}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round">
-                  <path d="M8 6l-4 6 4 6"/><path d="M16 6l4 6-4 6"/>
-                </svg>
-              </div>
-            </div>
-
-            {/* Labels */}
-            <div style={{
-              position: "absolute", top: "16px", left: "16px", zIndex: 5,
-              padding: "0.4rem 0.9rem", borderRadius: "100px",
-              background: "rgba(0,0,0,0.55)", backdropFilter: "blur(8px)",
-              fontFamily: "'Exo 2',sans-serif", fontSize: "0.7rem", fontWeight: 700,
-              letterSpacing: "0.18em", color: "#ff6b6b", textTransform: "uppercase",
-            }}>
-              {"✕"} WITHOUT DESIGN
-            </div>
-            <div style={{
-              position: "absolute", top: "16px", right: "16px", zIndex: 5,
-              padding: "0.4rem 0.9rem", borderRadius: "100px",
-              background: "rgba(0,0,0,0.55)", backdropFilter: "blur(8px)",
-              fontFamily: "'Exo 2',sans-serif", fontSize: "0.7rem", fontWeight: 700,
-              letterSpacing: "0.18em", color: "#4DD9FF", textTransform: "uppercase",
-            }}>
-              {"✓"} WITH LANDLITE DESIGN
-            </div>
-
-            {/* Before stats (bottom-left) */}
-            <div className="ld-stat-card" style={{
-              position: "absolute", bottom: "16px", left: "16px", zIndex: 5,
-              padding: "0.75rem 1rem", borderRadius: "10px",
-              background: "rgba(0,0,0,0.6)",
-              border: "1px solid rgba(255,100,100,0.3)",
-              display: "flex", gap: "1rem",
-            }}>
-              {Object.entries(comparisons[compareIdx].stats.before).map(([k, v]) => (
-                <div key={k} style={{ textAlign: "center" }}>
-                  <div style={{ fontFamily: "'Exo 2',sans-serif", fontWeight: 900, fontSize: "1rem", color: "#ff6b6b" }}>{v}</div>
-                  <div style={{ fontFamily: "'Exo 2',sans-serif", fontSize: "0.55rem", fontWeight: 600, letterSpacing: "0.15em", color: "rgba(255,255,255,0.5)", textTransform: "uppercase" }}>{k}</div>
-                </div>
-              ))}
-            </div>
-
-            {/* After stats (bottom-right) */}
-            <div className="ld-stat-card" style={{
-              position: "absolute", bottom: "16px", right: "16px", zIndex: 5,
-              padding: "0.75rem 1rem", borderRadius: "10px",
-              background: "rgba(0,0,0,0.6)",
-              border: "1px solid rgba(14,187,240,0.4)",
-              display: "flex", gap: "1rem",
-            }}>
-              {Object.entries(comparisons[compareIdx].stats.after).map(([k, v]) => (
-                <div key={k} style={{ textAlign: "center" }}>
-                  <div style={{ fontFamily: "'Exo 2',sans-serif", fontWeight: 900, fontSize: "1rem", color: "#4DD9FF" }}>{v}</div>
-                  <div style={{ fontFamily: "'Exo 2',sans-serif", fontSize: "0.55rem", fontWeight: 600, letterSpacing: "0.15em", color: "rgba(255,255,255,0.5)", textTransform: "uppercase" }}>{k}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Improvement callouts */}
-          <div ref={addRef} className="reveal" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem", marginTop: "2rem", maxWidth: "1000px", margin: "2rem auto 0" }}>
-            {[
-              { icon: "bulb", label: "Better Visibility", value: `${comparisons[compareIdx].stats.before.lux} → ${comparisons[compareIdx].stats.after.lux} lux`, desc: "Optimized illumination levels" },
-              { icon: "design", label: "True Color Rendering", value: `CRI ${comparisons[compareIdx].stats.before.cri} → ${comparisons[compareIdx].stats.after.cri}`, desc: "Everything looks its best" },
-              { icon: "sparkle", label: "Energy Savings", value: `${comparisons[compareIdx].stats.before.watts} → ${comparisons[compareIdx].stats.after.watts}`, desc: "Better light, less power" },
-            ].map((item) => (
-              <div key={item.label} style={{
-                padding: "1.25rem", borderRadius: "12px",
-                background: "var(--paper)", border: "1px solid rgba(14,187,240,0.12)",
-                boxShadow: "0 2px 8px rgba(5,13,26,0.05)", textAlign: "center",
-              }}>
-                <div style={{ color: "var(--azure-deep)", marginBottom: "0.5rem", display: "flex", justifyContent: "center" }}>
-                  <Icon name={item.icon} size={22} />
-                </div>
-                <div style={{ fontFamily: "'Exo 2',sans-serif", fontWeight: 900, fontSize: "1rem", color: "var(--azure-deep)", marginBottom: "0.2rem" }}>{item.value}</div>
-                <div style={{ fontFamily: "'Exo 2',sans-serif", fontWeight: 700, fontSize: "0.75rem", color: "var(--text)", marginBottom: "0.15rem" }}>{item.label}</div>
-                <div style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "0.78rem", color: "var(--text-muted)" }}>{item.desc}</div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
